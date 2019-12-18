@@ -12,7 +12,7 @@ const team1 = {
     teamSummary: function () {
         //这时this还是指向team的
         return this.members.map(function (member) {
-            //map函数后this就不是指向team而是window了
+            //map函数后this就不是指向team而是window了, 因为map函数不是team1里的成员
             return `${member} 隶属 ${this.teamName}`;
         })
     }
@@ -50,7 +50,7 @@ const team4 = {
     members: ['henrry', 'elen'],
     teamName: 'es6',
     teamSummary: function () {
-        //解决办法3: 箭头函数
+        //解决办法3: 箭头函数，箭头函数不绑定this，而是指向使用箭头函数的位置
         return this.members.map((member) => {
             return `${member} 隶属 ${this.teamName}`;
 
